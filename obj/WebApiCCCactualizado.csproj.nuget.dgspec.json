@@ -1,33 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Henry\\source\\repos\\WebApiCCCactualizado\\WebApiCCCactualizado.csproj": {}
+    "C:\\Users\\Evolution\\Source\\Repos\\henryNuncira\\TesisGrado\\WebApiCCCactualizado.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Henry\\source\\repos\\WebApiCCCactualizado\\WebApiCCCactualizado.csproj": {
+    "C:\\Users\\Evolution\\Source\\Repos\\henryNuncira\\TesisGrado\\WebApiCCCactualizado.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Henry\\source\\repos\\WebApiCCCactualizado\\WebApiCCCactualizado.csproj",
+        "projectUniqueName": "C:\\Users\\Evolution\\Source\\Repos\\henryNuncira\\TesisGrado\\WebApiCCCactualizado.csproj",
         "projectName": "WebApiCCCactualizado",
-        "projectPath": "C:\\Users\\Henry\\source\\repos\\WebApiCCCactualizado\\WebApiCCCactualizado.csproj",
-        "packagesPath": "C:\\Users\\Henry\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Henry\\source\\repos\\WebApiCCCactualizado\\obj\\",
+        "projectPath": "C:\\Users\\Evolution\\Source\\Repos\\henryNuncira\\TesisGrado\\WebApiCCCactualizado.csproj",
+        "packagesPath": "C:\\Users\\Evolution\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Evolution\\Source\\Repos\\henryNuncira\\TesisGrado\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Henry\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Evolution\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/R91ehcNLTBsvwTN6bqVKidZFIIjiBajZumlWChpNuN9nMOu9D3/api": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -55,31 +51,31 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.6, )"
+              "version": "[5.0.9, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.6, )"
+              "version": "[5.0.9, )"
             },
             "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
-              "version": "[5.0.6, )"
+              "version": "[5.0.9, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.6, )"
+              "version": "[5.0.9, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite.Core": {
               "target": "Package",
-              "version": "[5.0.6, )"
+              "version": "[5.0.9, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.6, )"
+              "version": "[5.0.9, )"
             },
             "System.Linq": {
               "target": "Package",
@@ -100,12 +96,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.12, 3.1.12]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -114,7 +104,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
         }
       }
     }

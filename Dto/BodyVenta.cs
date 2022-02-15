@@ -11,10 +11,10 @@ namespace WebApiCCCactualizado.Dto
         [Required]
         [Range(1,Double.MaxValue,ErrorMessage ="El valor del idCliente debe ser mayor a 0")]
         [ExisteCliente(ErrorMessage ="El cliente no existe")]
-        public int? IdCliente { get; set; }
+        public int IdCliente { get; set; }
 
         public DateTime? Fecha { get; set; }
-        public decimal? Total { get; set; }
+      
         public string NumeroComprobante { get; set; }
         public decimal? Impuesto { get; set; }
         public string TipoComprobante { get; set; }

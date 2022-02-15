@@ -622,11 +622,10 @@ namespace WebApiCCCactualizado.Controllers
                     {
                         Ventum venta = new Ventum();
                         venta.Fecha = DateTime.Now;
-                        venta.Total = bodyVenta.Detalles.Sum(d => (d.Cantidad * d.Precio) - d.Descuento);
                         venta.TipoComprobante = bodyVenta.TipoComprobante;
                         venta.NumeroComprobante = bodyVenta.NumeroComprobante;
                         venta.Impuesto = bodyVenta.Impuesto;
-
+                        venta.Total = bodyVenta.Detalles.Sum(d => (d.Cantidad * d.Precio) - d.Descuento);
                         venta.IdCliente = bodyVenta.IdCliente;
                         venta.IdVendedor = bodyVenta.IdVendedor;
                         context.Venta.Add(venta);
@@ -635,15 +634,17 @@ namespace WebApiCCCactualizado.Controllers
                         foreach (var bodydetalle in bodyVenta.Detalles)
                         {
                             DetalleVentum detalle = new Models.DetalleVentum();
+                            detalle.IdProducto = bodydetalle.idProducto;
+                            var producto = GetListarProductoId(Convert.ToInt32(bodydetalle.idProducto));
                             detalle.Cantidad = bodydetalle.Cantidad;
-                            detalle.Precio = bodydetalle.Precio;
+                            detalle.Precio = producto.PrecioVenta;
                             detalle.Descuento = bodydetalle.Descuento;
                             detalle.IdVenta = venta.IdVenta;
-                            detalle.IdProducto = bodydetalle.idProducto;
+                            
                             context.DetalleVenta.Add(detalle);
                             context.SaveChanges();
                         }
-
+                        
                         transaction.Commit();
                         return new Response { state = 200, message = "Se creo un nueva venta correctamente" };
                     }
