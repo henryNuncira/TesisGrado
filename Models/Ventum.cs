@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace WebApiCCCactualizado.Models
 {
-    public  class Ventum
+    public partial class Ventum
     {
         public Ventum()
         {
@@ -21,10 +21,8 @@ namespace WebApiCCCactualizado.Models
         public decimal? Total { get; set; }
         public int? IdVendedor { get; set; }
 
-
-
-        public  Cliente IdClienteNavigation { get; set; }
-        public Vendedor IdVendedorNavigation { get; set; }
-        public  ICollection<DetalleVentum> DetalleVenta { get; set; }
+        public virtual Cliente IdClienteNavigation { get; set; }
+        public virtual Vendedor IdVendedorNavigation { get; set; }
+        public virtual ICollection<DetalleVentum> DetalleVenta { get; set; }
     }
 }

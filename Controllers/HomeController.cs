@@ -14,7 +14,7 @@ namespace WebApiCCCactualizado.Controllers
     [ApiController]
     public class HomeController : Controller
     {
-        CCCVentasContext context = new CCCVentasContext();
+        CCCVEntasContext context = new CCCVEntasContext();
 
         //----------------************* login *******------------------
         [HttpGet]
@@ -22,6 +22,13 @@ namespace WebApiCCCactualizado.Controllers
         {
 
             return context.Usuarios.ToList(); ;
+
+        }
+        [HttpGet]
+        public IEnumerable<Rol> GetRoles()
+        {
+
+            return context.Rols.ToList(); ;
 
         }
 
@@ -40,7 +47,7 @@ namespace WebApiCCCactualizado.Controllers
                     Password = Password.Password,
                     Sal = Password.Salt,
                     Activo = usuario.Activo,
-                    Rol = usuario.Rol,
+                    IdRol = usuario.Rol,
                     Token = Convert.ToBase64String(Guid.NewGuid().ToByteArray()),
 
                 };
@@ -80,8 +87,7 @@ namespace WebApiCCCactualizado.Controllers
         [HttpDelete("{idUsuario}")]
         public ActionResult DeleteUsuario(int idUsuario)
         {
-            // var cliente = context.Clientes.Find(idCliente);
-            // var usuario = context.Usuario.Find(idUsuario);
+
             var usuario = context.Usuarios.FirstOrDefault(x => x.IdUsuario == idUsuario);
 
             if (usuario != null)
@@ -128,10 +134,10 @@ namespace WebApiCCCactualizado.Controllers
 
                 if (claveVerificada == claveBD)
                 {
-                    var acti = usuario.Select(x => x.Activo).ToList()[0];
-                    var rolactivo = usuario.Select(x => x.Rol).ToList()[0];
+                    
+                    var rolactivo = usuario.Select(x => x.IdRol).ToList()[0];
                     var token = usuario.Select(x => x.Token).ToList()[0];
-                    if (acti == 1)
+                    if (usuario[0].Activo == true)
                     {
 
                         return new Response { state = 200, message = "Usuario Activo", rol = (int)rolactivo, token = (string)token };
@@ -422,7 +428,7 @@ namespace WebApiCCCactualizado.Controllers
         {
             try
             {
-                CCCVentasContext context = new CCCVentasContext();
+                CCCVEntasContext context = new CCCVEntasContext();
                 Categorium cate = new Categorium
                 {
                     Nombre = bodycategoria.NombreBProducto,

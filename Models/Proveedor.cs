@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace WebApiCCCactualizado.Models
 {
-    public class Proveedor
+    public partial class Proveedor
     {
         public Proveedor()
         {
@@ -19,6 +19,6 @@ namespace WebApiCCCactualizado.Models
         public string Direccion { get; set; }
         public string CorreoElectronico { get; set; }
 
-        public ICollection<Ingreso> Ingresos { get; set; }
+        public virtual ICollection<Ingreso> Ingresos { get; set; }
     }
 }

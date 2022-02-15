@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Controllers"
+    "\\Controllers",
+    "\\Dto"
   ],
-  "SelectedNode": "\\WebApiCCCactualizado.sln",
+  "SelectedNode": "\\Dto\\BodyRol.cs",
   "PreviewInSolutionExplorer": false
 }

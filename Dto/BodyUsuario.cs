@@ -11,7 +11,7 @@ namespace WebApiCCCactualizado.Dto
         public string Password { get; set; }
         public string Sal { get; set; }
         public string Token { get; set; }
-        public int Activo { get; set; }
+        public bool Activo { get; set; }
         public int Rol { get; set; }
     }
 }

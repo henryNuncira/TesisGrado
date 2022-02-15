@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace WebApiCCCactualizado.Models
 {
-    public class Categorium
+    public partial class Categorium
     {
         public Categorium()
         {
@@ -16,6 +16,6 @@ namespace WebApiCCCactualizado.Models
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
 
-        public ICollection<Producto> Productos { get; set; }
+        public virtual ICollection<Producto> Productos { get; set; }
     }
 }

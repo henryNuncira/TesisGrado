@@ -6,34 +6,35 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace WebApiCCCactualizado.Models
 {
-    public class CCCVentasContext : DbContext
+    public partial class CCCVEntasContext : DbContext
     {
-        public CCCVentasContext()
+        public CCCVEntasContext()
         {
         }
 
-        public CCCVentasContext(DbContextOptions<CCCVentasContext> options)
+        public CCCVEntasContext(DbContextOptions<CCCVEntasContext> options)
             : base(options)
         {
         }
 
-        public DbSet<Categorium> Categoria { get; set; }
-        public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<DetalleIngreso> DetalleIngresos { get; set; }
-        public DbSet<DetalleVentum> DetalleVenta { get; set; }
-        public DbSet<Ingreso> Ingresos { get; set; }
-        public DbSet<Producto> Productos { get; set; }
-        public DbSet<Proveedor> Proveedors { get; set; }
-        public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Vendedor> Vendedors { get; set; }
-        public DbSet<Ventum> Venta { get; set; }
+        public virtual DbSet<Categorium> Categoria { get; set; }
+        public virtual DbSet<Cliente> Clientes { get; set; }
+        public virtual DbSet<DetalleIngreso> DetalleIngresos { get; set; }
+        public virtual DbSet<DetalleVentum> DetalleVenta { get; set; }
+        public virtual DbSet<Ingreso> Ingresos { get; set; }
+        public virtual DbSet<Producto> Productos { get; set; }
+        public virtual DbSet<Proveedor> Proveedors { get; set; }
+        public virtual DbSet<Rol> Rols { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<Vendedor> Vendedors { get; set; }
+        public virtual DbSet<Ventum> Venta { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=CCCVentas;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=CCCVEntas;Trusted_Connection=True;");
             }
         }
 
@@ -103,20 +104,12 @@ namespace WebApiCCCactualizado.Models
                     .HasColumnType("decimal(11, 2)")
                     .HasColumnName("precio");
 
-                //entity.HasOne(d => d.IdIngresoNavigation)
-                //    .WithMany(p => p.DetalleIngresos)
-                //    .HasForeignKey(d => d.IdIngreso)
-                //    .HasConstraintName("FK__DetalleIn__idIng__4CA06362");
-                    modelBuilder.Entity<DetalleIngreso>()
+                modelBuilder.Entity<DetalleIngreso>()
                  .HasOne<Ingreso>(d => d.IdIngresoNavigation)
                  .WithMany(p => p.DetalleIngresos)
                  .HasForeignKey(d => d.IdIngreso)
                 .OnDelete(DeleteBehavior.Cascade);
 
-                //entity.HasOne(d => d.IdProductoNavigation)
-                //    .WithMany(p => p.DetalleIngresos)
-                //    .HasForeignKey(d => d.IdProducto)
-                //    .HasConstraintName("FK__DetalleIn__idPro__47DBAE45");
                 modelBuilder.Entity<DetalleIngreso>()
                  .HasOne<Producto>(d => d.IdProductoNavigation)
                  .WithMany(p => p.DetalleIngresos)
@@ -144,25 +137,15 @@ namespace WebApiCCCactualizado.Models
                     .HasColumnType("decimal(11, 2)")
                     .HasColumnName("precio");
 
-                //entity.HasOne(d => d.IdProductoNavigation)
-                //    .WithMany(p => p.DetalleVenta)
-                //    .HasForeignKey(d => d.IdProducto)
-                //    .HasConstraintName("FK__DetalleVe__idPro__48CFD27E");
-                   modelBuilder.Entity<DetalleVentum>()
-                .HasOne<Producto>(d => d.IdProductoNavigation)
-                .WithMany(p => p.DetalleVenta)
-                .HasForeignKey(d => d.IdProducto)
-                .OnDelete(DeleteBehavior.Cascade);
+                entity.HasOne(d => d.IdProductoNavigation)
+                    .WithMany(p => p.DetalleVenta)
+                    .HasForeignKey(d => d.IdProducto)
+                    .HasConstraintName("FK__DetalleVe__idPro__49C3F6B7");
 
-                //entity.HasOne(d => d.IdVentaNavigation)
-                //    .WithMany(p => p.DetalleVenta)
-                //    .HasForeignKey(d => d.IdVenta)
-                //    .HasConstraintName("FK__DetalleVe__idVen__49C3F6B7");
-                modelBuilder.Entity<DetalleVentum>()
-                .HasOne<Ventum>(d => d.IdVentaNavigation)
-                .WithMany(p => p.DetalleVenta)
-                .HasForeignKey(d => d.IdVenta)
-                .OnDelete(DeleteBehavior.Cascade);
+                entity.HasOne(d => d.IdVentaNavigation)
+                    .WithMany(p => p.DetalleVenta)
+                    .HasForeignKey(d => d.IdVenta)
+                    .HasConstraintName("FK__DetalleVe__idVen__4AB81AF0");
             });
 
             modelBuilder.Entity<Ingreso>(entity =>
@@ -196,15 +179,11 @@ namespace WebApiCCCactualizado.Models
                     .HasColumnType("decimal(11, 2)")
                     .HasColumnName("total");
 
-                //entity.HasOne(d => d.IdProveedorNavigation)
-                //    .WithMany(p => p.Ingresos)
-                //    .HasForeignKey(d => d.IdProveedor)
-                //    .HasConstraintName("FK__Ingreso__idProve__4D94879B");
                 modelBuilder.Entity<Ingreso>()
-                  .HasOne<Proveedor>(d => d.IdProveedorNavigation)
-                  .WithMany(p => p.Ingresos)
-                  .HasForeignKey(d => d.IdProveedor)
-                  .OnDelete(DeleteBehavior.Cascade);
+                 .HasOne<Proveedor>(d => d.IdProveedorNavigation)
+                 .WithMany(p => p.Ingresos)
+                 .HasForeignKey(d => d.IdProveedor)
+                 .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<Producto>(entity =>
@@ -233,15 +212,11 @@ namespace WebApiCCCactualizado.Models
 
                 entity.Property(e => e.Stock).HasColumnName("stock");
 
-                //entity.HasOne(d => d.IdCategoriaNavigation)
-                //    .WithMany(p => p.Productos)
-                //    .HasForeignKey(d => d.IdCategoria)
-                //    .HasConstraintName("FK__Producto__idCate__46E78A0C");
                 modelBuilder.Entity<Producto>()
-              .HasOne<Categorium>(d => d.IdCategoriaNavigation)
-              .WithMany(p => p.Productos)
-              .HasForeignKey(d => d.IdCategoria)
-              .OnDelete(DeleteBehavior.Cascade);
+                 .HasOne<Categorium>(d => d.IdCategoriaNavigation)
+                 .WithMany(p => p.Productos)
+                 .HasForeignKey(d => d.IdCategoria)
+                 .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<Proveedor>(entity =>
@@ -273,6 +248,19 @@ namespace WebApiCCCactualizado.Models
                     .HasColumnName("telefono");
             });
 
+            modelBuilder.Entity<Rol>(entity =>
+            {
+                entity.HasKey(e => e.IdRol);
+
+                entity.ToTable("Rol");
+
+                entity.Property(e => e.IdRol).HasColumnName("idRol");
+
+                entity.Property(e => e.NombreRol)
+                    .HasMaxLength(50)
+                    .HasColumnName("nombreRol");
+            });
+
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario);
@@ -283,6 +271,8 @@ namespace WebApiCCCactualizado.Models
 
                 entity.Property(e => e.Activo).HasColumnName("activo");
 
+                entity.Property(e => e.IdRol).HasColumnName("idRol");
+
                 entity.Property(e => e.NombreUsuario)
                     .HasMaxLength(50)
                     .HasColumnName("nombreUsuario");
@@ -290,8 +280,6 @@ namespace WebApiCCCactualizado.Models
                 entity.Property(e => e.Password)
                     .HasMaxLength(50)
                     .HasColumnName("password");
-
-                entity.Property(e => e.Rol).HasColumnName("rol");
 
                 entity.Property(e => e.Sal)
                     .HasMaxLength(500)
@@ -302,6 +290,12 @@ namespace WebApiCCCactualizado.Models
                     .HasMaxLength(500)
                     .IsUnicode(false)
                     .HasColumnName("token");
+
+                modelBuilder.Entity<Usuario>()
+                    .HasOne<Rol>(d => d.IdRolNavigation)
+                    .WithMany(p => p.Usuarios)
+                    .HasForeignKey(d => d.IdRol)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<Vendedor>(entity =>
@@ -363,29 +357,21 @@ namespace WebApiCCCactualizado.Models
                     .HasColumnType("decimal(11, 2)")
                     .HasColumnName("total");
 
-                //entity.HasOne(d => d.IdClienteNavigation)
-                //    .WithMany(p => p.Venta)
-                //    .HasForeignKey(d => d.IdCliente)
-                //    .HasConstraintName("FK__Venta__idCliente__4AB81AF0");
                 modelBuilder.Entity<Ventum>()
-                .HasOne<Cliente>(d => d.IdClienteNavigation)
-                .WithMany(p => p.Venta)
-                .HasForeignKey(d => d.IdCliente)
-                .OnDelete(DeleteBehavior.Cascade);
+                    .HasOne<Cliente>(d => d.IdClienteNavigation)
+                    .WithMany(p => p.Venta)
+                    .HasForeignKey(d => d.IdCliente)
+                    .OnDelete(DeleteBehavior.Cascade);
 
-                //entity.HasOne(d => d.IdVendedorNavigation)
-                //    .WithMany(p => p.Venta)
-                //    .HasForeignKey(d => d.IdVendedor)
-                //    .HasConstraintName("FK__Venta__idVendedo__4BAC3F29");
                 modelBuilder.Entity<Ventum>()
-                 .HasOne<Vendedor>(d => d.IdVendedorNavigation)
-                 .WithMany(p => p.Venta)
-                 .HasForeignKey(d => d.IdVendedor);
+                     .HasOne<Vendedor>(d => d.IdVendedorNavigation)
+                     .WithMany(p => p.Venta)
+                     .HasForeignKey(d => d.IdVendedor);
             });
 
-  //          OnModelCreatingPartial(modelBuilder);
+           // OnModelCreatingPartial(modelBuilder);
         }
 
-     //   partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+      //  partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

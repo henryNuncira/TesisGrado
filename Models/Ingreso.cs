@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace WebApiCCCactualizado.Models
 {
-    public class Ingreso
+    public partial class Ingreso
     {
         public Ingreso()
         {
@@ -20,7 +20,7 @@ namespace WebApiCCCactualizado.Models
         public decimal? Impuesto { get; set; }
         public decimal? Total { get; set; }
 
-        public Proveedor IdProveedorNavigation { get; set; }
-        public ICollection<DetalleIngreso> DetalleIngresos { get; set; }
+        public virtual Proveedor IdProveedorNavigation { get; set; }
+        public virtual ICollection<DetalleIngreso> DetalleIngresos { get; set; }
     }
 }

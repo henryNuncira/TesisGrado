@@ -42,7 +42,7 @@ namespace WebApiCCCactualizado.Dto
         public override bool IsValid(object value)
         {
             int idCliente = (int)value;
-            using(var db = new Models.CCCVentasContext())
+            using(var db = new Models.CCCVEntasContext())
             {
                 if (db.Clientes.Find(idCliente) == null) return false;
             }
