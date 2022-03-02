@@ -149,7 +149,7 @@ namespace WebApiCCCactualizado.Controllers
                 }
                 else
                 {
-                    return new Response { state = 400, message = "Clave incorrecta No existe revise sus credenciales", rol = 0 };
+                    return new Response { state = 400, message = "Clave incorrecta o No existe revise sus credenciales", rol = 0 };
                 }
 
             }
